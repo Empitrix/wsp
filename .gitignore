@@ -1,0 +1,12 @@
+*.pyc
+*.pyo
+# Compiled
+build/
+dist/
+
+# Byte-Compiled / Optimized
+__pycache__/
+*.py[cod]
+
+# C extensions
+*.so
