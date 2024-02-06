@@ -8,7 +8,7 @@ class WSPCompiler:
 	def __init__(self) -> None:
 		"""This is for converting *.wsps to valid python code"""
 		self.db:Database = Database(path=get_path())
-		self.path = ""
+		self.script:Optional[Script] = None 
 
 
 	def load_file(self, path:str) -> Script:
@@ -24,15 +24,22 @@ class WSPCompiler:
 		if script.name == "":
 			print("Invalid data!")
 			sys.exit()
+		self.script = script
 		return script
 
-	
+
 	def load_script(self, name:str):
 		"""Use pre-load saved is database scripts"""
 		result:Optional[Script] = self.db.read(name=name)
 		if result == None:
 			print('Script not Exsit!')
 			sys.exit(127)
+		self.script = result
 		return result
+
+
+	# def current_script(self) -> Optional[Script]:
+	# 	"""Get current script loaded from file or db"""
+	# 	return self.script
 
 
