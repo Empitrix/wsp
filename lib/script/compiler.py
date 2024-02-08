@@ -1,7 +1,7 @@
 import os, sys
 from typing import Optional
 from lib.database import Database, get_path
-from lib.models import Script
+from lib.models import DebugLine, Script
 from lib.script.parser import WSPParser
 
 
@@ -43,7 +43,8 @@ class WSPCompiler:
 		if self.script == None:
 			print("Invalid Data! (script is not found)")
 			sys.exit()
-		WSPParser(script=self.script).parse()
-		pass
+		lines:list[DebugLine] = WSPParser(script=self.script).parse()
+		for line in lines:
+			pass
 
 

@@ -1,5 +1,8 @@
 from lib.models import DebugLine, Script
-import re
+from typing import Optional
+import re, sys
+
+from lib.script.rules import get_rules
 # import re
 
 """\
@@ -45,9 +48,33 @@ class WSPParser:
 		idx = 0
 		for v1 in captured:
 			for v2 in v1.split(';'):
-				lines.append(DebugLine(idx=idx, line=v2.strip()))
-				idx += 1
+				if v2.strip() != "":
+					# dline = DebugLine(idx=idx, line=v2.strip())
+					dline = get_action(idx, v2.strip())
+					# get_action(idx, dline.line)
+					lines.append(dline)
+					idx += 1
 			idx += 1
 		return lines
 
+
+
+
+def get_action(idx:int, inpt:str) -> DebugLine:
+	dline:Optional[DebugLine] = None
+	for rule in get_rules():
+		founded:list[str] = re.findall(rule.pattern, inpt);
+		if len(founded) == rule.amount:
+			dline = DebugLine(idx=idx, line=inpt, action=rule.action, value="")
+		elif len(founded) > rule.amount:
+			print(f"ERR: in line: {idx}")
+			sys.exit()
+		else:
+			# print("This is Less, This action did not matched!")
+			continue
+
+	if dline == None:
+		print(f"ERR!, Invalid code at: line [{idx + 1}]\n> {inpt}")
+		sys.exit()
+	return dline
 
