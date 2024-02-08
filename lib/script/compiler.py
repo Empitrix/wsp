@@ -2,6 +2,7 @@ import os, sys
 from typing import Optional
 from lib.database import Database, get_path
 from lib.models import Script
+from lib.script.parser import WSPParser
 
 
 class WSPCompiler:
@@ -37,9 +38,12 @@ class WSPCompiler:
 		self.script = result
 		return result
 
-
-	# def current_script(self) -> Optional[Script]:
-	# 	"""Get current script loaded from file or db"""
-	# 	return self.script
+	def compile(self) -> None:
+		"""Compile the scriopt"""
+		if self.script == None:
+			print("Invalid Data! (script is not found)")
+			sys.exit()
+		WSPParser(script=self.script).parse()
+		pass
 
 

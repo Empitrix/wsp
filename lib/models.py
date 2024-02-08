@@ -12,3 +12,10 @@ class Script:
 
 def parse_script(inpt:dict[str, str]) -> Script:
 	return Script(name=inpt["name"], data=inpt["data"])
+
+
+class DebugLine:
+	def __init__(self, idx:int, line:str) -> None:
+		self.idx = idx
+		self.line = line
+

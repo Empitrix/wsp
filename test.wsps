@@ -1,0 +1,4 @@
+#!focus: <nill>;
+// Select All
+#!short: "ctrl + a";
+!print("Select All");
