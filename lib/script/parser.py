@@ -63,7 +63,8 @@ class WSPParser:
 def get_action(idx:int, inpt:str) -> DebugLine:
 	dline:Optional[DebugLine] = None
 	for rule in get_rules():
-		founded:list[str] = re.findall(rule.pattern, inpt);
+		# founded:list[str] = re.findall(rule.pattern, inpt);
+		founded:list[str] = re.findall(rule.pattern, inpt, flags=re.MULTILINE);
 		if len(founded) == rule.amount:
 			dline = DebugLine(idx=idx, line=inpt, action=rule.action, value="")
 		elif len(founded) > rule.amount:
@@ -74,7 +75,8 @@ def get_action(idx:int, inpt:str) -> DebugLine:
 			continue
 
 	if dline == None:
-		print(f"ERR!, Invalid code at: line [{idx + 1}]\n> {inpt}")
+		print(f"ERR!, invalid syntax at: line [{idx + 1}]\n> {inpt}")
 		sys.exit()
+	print(dline.line)
 	return dline
 

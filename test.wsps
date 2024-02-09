@@ -1,4 +1,5 @@
-#!focus: "";
+!#focus: "";
 // Select All
-#!short: "ctrl + a";
+!#short: "ctrl + a";
+!#type: "This is Awesome!"
 !print("Select All");
