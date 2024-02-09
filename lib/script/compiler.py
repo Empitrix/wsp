@@ -45,6 +45,7 @@ class WSPCompiler:
 			sys.exit()
 		lines:list[DebugLine] = WSPParser(script=self.script).parse()
 		for line in lines:
+			# print(line.line, "->", line.action, "->", line.idx)
 			pass
 
 

@@ -50,7 +50,7 @@ class WSPParser:
 			for v2 in v1.split(';'):
 				if v2.strip() != "":
 					# dline = DebugLine(idx=idx, line=v2.strip())
-					dline = get_action(idx, v2.strip())
+					dline = get_action(idx, f"{v2.strip()};")
 					# get_action(idx, dline.line)
 					lines.append(dline)
 					idx += 1
