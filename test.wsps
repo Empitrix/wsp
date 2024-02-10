@@ -1,5 +1,12 @@
+// Variabels
+!@ name = "This taht you see is defined in a variable yo hahaha";
+!@ allOf = "All oF";
+!@ ragers = "AAAA";
+
+// Set focus to <nothing>
 !#focus: "";
 // Select All
 !#short: "ctrl + a";
 !#type: "This is Awesome!";
-!print("Select All");
+!print(!$name);
+!print(!$ragers);
