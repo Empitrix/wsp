@@ -44,8 +44,6 @@ class WSPCompiler:
 			print("Invalid Data! (script is not found)")
 			sys.exit()
 		lines:list[DebugLine] = WSPParser(script=self.script).parse()
-		for line in lines:
-			# print(line.line, "->", line.action, "->", line.idx)
-			pass
+		# Apply actions on each line
 
 
