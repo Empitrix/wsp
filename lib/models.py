@@ -22,7 +22,7 @@ class DebugAction(Enum):
 	DELAY = 2
 	SHORT = 3
 	TYPING = 4
-	FUNCTION = 5
+	PRINT = 5
 
 
 class DebugLine:

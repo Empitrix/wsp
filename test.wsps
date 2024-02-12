@@ -1,12 +1,14 @@
 // Variabels
+// !#focus: "neovide.exe";
 !@ name = "This taht you see is defined in a variable yo hahaha";
 !@ allOf = "All oF";
 !@ ragers = "AAAA";
 
 // Set focus to <nothing>
-!#focus: "";
+// !#focus: "";
 // Select All
 !#short: "ctrl + a";
 !#type: "This is Awesome!";
 !print(!$name);
+// !#focus: "WindowsTerminal.exe";
 !print(!$ragers);

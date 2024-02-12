@@ -10,3 +10,4 @@ compiler:WSPCompiler = WSPCompiler()
 
 compiler.load_file(os.path.join(os.getcwd(), "test.wsps"))
 compiler.compile()
+

@@ -10,5 +10,5 @@ def get_rules() -> list[Rule]:
 		Rule(r'!#short:\s*\".*?\"\;', 1, DebugAction.SHORT),
 		Rule(r'!#type:\s*\".*?\"\;', 1, DebugAction.TYPING),
 		# Funcs
-		Rule(r'\!print\(\".*?\"\)\;', 1, DebugAction.FUNCTION),
+		Rule(r'\!print\(\".*?\"\)\;', 1, DebugAction.PRINT),
 	]

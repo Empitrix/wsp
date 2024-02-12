@@ -1,8 +1,9 @@
 import os, sys
 from typing import Optional
 from lib.database import Database, get_path
-from lib.models import DebugLine, Script
+from lib.models import DebugAction, DebugLine, Script
 from lib.script.parser import WSPParser
+from lib.utils import DebugUtils
 
 
 class WSPCompiler:
@@ -44,8 +45,19 @@ class WSPCompiler:
 			print("Invalid Data! (script is not found)")
 			sys.exit()
 		lines:list[DebugLine] = WSPParser(script=self.script).parse()
+
+		current_focus:str = ""
+		utils:DebugUtils = DebugUtils()
 		for line in lines:
-			# print(line.line, "->", line.value, "-->", line.action)
-			print(line.line)
+			if line.action == DebugAction.FOCUS:
+				current_focus = line.value.strip()
+
+			# Wait until right focus
+			utils.wait_for_foucs(current_focus)
+
+			# Main Actions
+			match line.action:
+				case DebugAction.PRINT:
+					print(line.value)
 
 
