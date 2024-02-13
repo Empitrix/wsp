@@ -1,0 +1,6 @@
+win32api
+win32com
+pyautogui
+win32gui
+win32process
+psutil

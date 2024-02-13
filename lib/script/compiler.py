@@ -4,6 +4,7 @@ from lib.database import Database, get_path
 from lib.models import DebugAction, DebugLine, Script
 from lib.script.parser import WSPParser
 from lib.utils import DebugUtils
+from win32api import Sleep
 
 
 class WSPCompiler:
@@ -29,12 +30,19 @@ class WSPCompiler:
 		self.script = script
 		return script
 
+	def try_parse(self):
+		"""Try to parse script"""
+		if self.script != None:
+			WSPParser(script=self.script).parse()
+		else:
+			print("Script is not found!")
+
 
 	def load_script(self, name:str):
 		"""Use pre-load saved is database scripts"""
 		result:Optional[Script] = self.db.read(name=name)
 		if result == None:
-			print('Script not Exsit!')
+			print("Script not Exsit!\nUse '-a' flag to see all the saved scripts")
 			sys.exit(127)
 		self.script = result
 		return result
@@ -59,5 +67,11 @@ class WSPCompiler:
 			match line.action:
 				case DebugAction.PRINT:
 					print(line.value)
+				case DebugAction.DELAY:
+					Sleep(int(line.value))
+				case DebugAction.SHORT:
+					utils.press_hot_key(line.value)
+				case DebugAction.TYPING:
+					utils.type_word(line.value)
 
 

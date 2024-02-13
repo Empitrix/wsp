@@ -44,6 +44,9 @@ class Database:
 		"""Database OBJ that do the CRUD for scripts"""
 		self.office = Office(path=path)
 
+	def access(self, inpt:Script) -> bool:
+		data:dict[str, list] = self.office.read()
+		return get_access(name=inpt.name, items=data)
 
 	def create(self, inpt:Script) -> bool:
 		"""Create a new Script"""

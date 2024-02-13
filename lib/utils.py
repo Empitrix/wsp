@@ -1,7 +1,7 @@
 import win32com.client as comclt
 import pyautogui
 from win32api import Sleep
-import win32gui, win32process, psutil, sys
+import win32gui, win32process, psutil
 from typing import Optional
 
 
