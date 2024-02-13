@@ -3,6 +3,7 @@ A python compiler for automating keyboard actions
 
 ## Language
 This is how `wsps` (Workspace Script) works:
+**Everything is string**
 
 Setup Comment
 ```text
@@ -17,7 +18,7 @@ Setup focus window name if this not define script will not wait until windows fo
 
 Setup delay time (digit as millisecond)
 ```text
-!#delay: <Delay as millisecond (int)>;
+!#delay: "<Delay as millisecond (int)>";
 ```
 
 Setup shortcut string
